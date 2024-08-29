@@ -1,1 +1,13 @@
 \chapter{Data Preprocessing}
+In order to merge the data from the different sources, we need to preprocess the data. This includes cleaning the data, removing duplicates, and merging the data. The data preprocessing is done in Python using the pandas library. 
+
+First we retireved all the unique ids of the songs from the chart dataset. From this we used the Spotify API in order to get the audio features of the songs. The audio features include features like danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, and duration.
+
+The chart dataset initially had about 20 million rows. In fact, for each region, the same song could be present multiple times, as it could be in the top 200 for multiple weeks. First thing, we kept the songs from the first time they were in the chart until just one year after. To remove the duplicates, we kept the mean of the rank and we kept just the first date in which the song was in the chart.
+
+We removed also some colums that we considered not useful for our analysis and also the streams column, as some regions had it and some didn't, so it wouldn't have been a trustable source.
+
+Some columns had the same title, the same artist, but different ids. We decided to keep the id that appeared more times in the dataset.
+
+By doing so, each region had every id just one time, and we could merge the data with the audio features.
+The final dataset had 200K rows and 20 columns.
