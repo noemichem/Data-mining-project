@@ -1,5 +1,39 @@
 \chapter{Introduction}
 
 \section{Purpose of the project}
+The music industry plays a significant role in today’s globalized world.
+It has been growing rapidly over the years. On the other hand, the music
+industry faces the unique challenge of addressing divers audiences across
+different countries. Each country has different tastes in music which are shaped
+by lots of factors. For record labels, understanding these preferences is
+crucial for successful music promotion and marketing. The ability to predict
+the popularity of a song before it is released can provide a significant 
+competitive privilege.\\
+\\
+This project aims to analyze the varying musical tastes across different countries by 
+understanding their popular songs and what makes those songs popular. To be able to understand
+which factors make the song more listened than the others in a specific country, the audio features 
+such as danceability, key, loudness, mode, speechiness and acousticness of the songs will be analyzed.
+By leveraging Data Mining and Machine Learning Techniques, the project will provide insights into
+the factors determining the popularity of songs in different countries.\\
+
 
 \section{Dataset}
+The final dataset used in this project is obtained by combining two different and extensive datasets.
+The first dataset is taken from the Spotify API. The dataset contains audio features of 160k+ songs. The audio features
+that are used in this project are danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness,
+liveness, valence, tempo, id, duration_ms, time_signature.  These features are essential for analyzing the musical 
+elements that contribute to a song's popularity in each country.\\
+The second dataset is taken from Kaggle which is called Spotify charts. (https://www.kaggle.com/datasets/dhruvildave/spotify-charts/data)
+This dataset contains information about the most popular songs in the countries. It is a complete dataset 
+of all the "Top 200" and "Viral 50" charts published globally by Spotify. Spotify publishes a new chart
+ every 2-3 days. This is Spotify's entire collection since January 1, 2017.
+ The included key details are the song's name, artist, spotify id, rank, and the number of streams 
+ in each country. This dataset is helpful to undertand how musical preferences change across different
+ parts of the world. \\
+ To create a unified dataset, first preprocessing is performed on both datasets, and final versions of two different 
+ datasets are combined by matching spotify ids column. This ensured that the audio features from the Spotify API were 
+ correctly associated with the corresponding songs and their popularity metrics in different countries.\\
+ The final dataset comprises 195000 rows of data in total for 69 different countries. The combined
+ dataset is approximately 30 MB in size, making it both manageable for analysis and rich enough to uncover 
+ meaningful insights.\\
