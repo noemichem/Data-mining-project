@@ -1,2 +1,11 @@
 
 *.csv
+.cache
+documentation/documentation.aux
+documentation/documentation.fdb_latexmk
+documentation/documentation.fls
+documentation/documentation.out
+documentation/documentation.pdf
+documentation/documentation.synctex.gz
+documentation/documentation.synctex(busy)
+documentation/documentation.toc
