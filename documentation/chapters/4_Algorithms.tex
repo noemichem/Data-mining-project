@@ -65,11 +65,12 @@ either 0 or 1, which 0 represents the song most probably will not be popular and
         \textbf{Overall Acuracy: } 
         \\
         0.85 - The overall accuracy of the model is 85\%. However, this number is misleading in the context of a highly imbalanced dataset, as it reflects the model's ability to predict the majority class (not popular) rather than its performance on both classes.
-    \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the logistic regression model.
+    \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the logistic regression model. Both feature importance for whole dataset and feature importance for each specific region has been applied. As a result of this dominant features to determine populartiy of the songs were found.
         \begin{figure}[h] 
             \centering 
             \includegraphics[width=0.7\textwidth]{media/logistic_reg_feature_imp.png} 
         \end{figure}
+        
     \item \textbf{Regional Analysis: } Regional analysis was performed to better understand how different audio features contribute to song populartiy across various regions.
     \begin{table}[ht]
         \centering
