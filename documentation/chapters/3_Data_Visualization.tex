@@ -1,1 +1,205 @@
 \chapter{Data Visualization}
+
+The final dataset has 189297 rows × 15 columns. The columns are as follows: 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lllll} % 5 columns per row
+    \toprule
+    \textbf{danceability} & \textbf{energy} & \textbf{key} & \textbf{loudness} & \textbf{mode} \\
+    \textbf{speechiness} & \textbf{acousticness} & \textbf{instrumentalness} & \textbf{liveness} & \textbf{valence} \\
+    \textbf{tempo} & \textbf{duration\_ms} & \textbf{time\_signature} & \textbf{region} & \textbf{popular} \\
+    \bottomrule
+    \end{tabular}
+    \caption{Column names in the dataset}
+\end{table}
+
+By visualizing and exploring the final dataset, we can underline the differeces with the raw dataset. This means that the preprocessing phase was fundamental to obtain a clean dataset.
+
+\begin{verbatim}
+    # Display the first few rows of the dataset
+    df.head()
+    
+    # Display basic information about the dataset
+    df.info()
+    \end{verbatim}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{media/info_cleaned.png} 
+        \caption{Basic information.}
+        \label{df.info()}
+    \end{figure}
+
+    One of the first thing to notice is how the memory usage has been reduced significantly. This is due to the removal of columns that were not useful for the analysis. In fact, the number of columns has been reduced from 25 to 15.
+    
+    \newpage
+    \begin{verbatim}
+    # Summary statistics of the dataset
+    df.describe()
+    \end{verbatim}
+    
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1.1\textwidth]{media/describe_cleaned.png} 
+        \caption{Summary statistics of the dataset.}
+        \label{df.describe()}
+    \end{figure}
+
+The popular songs represent about the 20\% of the dataset.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{media/popular_dist_cleaned.png} 
+        \caption{Distribution of popular songs.}
+        \label{popular_songs}
+    \end{figure}
+
+\newpage
+
+Each audio feature is distributed in this way: 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{media/feature_dist_cleaned.png} 
+    \caption{Distribution of audio features.}
+    \label{distribution}
+\end{figure}
+
+This is the boxplot of the audio features:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{media/boxplot_cleaned.png} 
+    \caption{Boxplot of audio features.}
+    \label{boxplot}
+\end{figure}
+
+\newpage
+
+This is the heatmap of the correlation matrix:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{media/heatmap_cleaned.png} 
+    \caption{Heatmap of the correlation matrix.}
+    \label{correlation}
+\end{figure}
+
+\newpage
+
+This is the scatter matrix of the audio features:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{media/scatter_matrix_cleaned.png} 
+    \caption{Scatter matrix of audio features.}
+    \label{scatter_matrix}
+\end{figure}
+
+
+
+\newpage
+
+We can also visualize the popularity of each feature in the different regions:
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region6_cleaned.png}
+        \caption{Popularity in Northern Europe}
+        \label{northern_europe}
+    \end{minipage}%
+    \hspace{0.05\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region9_cleaned.png}
+        \caption{Popularity in Southern Europe}
+        \label{southern_europe}
+    \end{minipage}
+    
+    \vspace{0.05\textwidth}
+    
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region10_cleaned.png}
+        \caption{Popularity in Western Europe}
+        \label{western_europe}
+    \end{minipage}%
+    \hspace{0.05\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region2_cleaned.png}
+        \caption{Popularity in Eastern Europe}
+        \label{eastern_europe}
+    \end{minipage}
+    
+    \vspace{0.05\textwidth}
+    
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region5_cleaned.png}
+        \caption{Popularity in North America}
+        \label{north_america}
+    \end{minipage}%
+    \hspace{0.05\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region3_cleaned.png}
+        \caption{Popularity in Latin America}
+        \label{latin_america}
+    \end{minipage}
+\end{figure}
+
+\clearpage % Force new page after 6 figures
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region7_cleaned.png}
+        \caption{Popularity in Oceania}
+        \label{oceania}
+    \end{minipage}%
+    \hspace{0.05\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region1_cleaned.png}
+        \caption{Popularity in East Asia}
+        \label{east_asia}
+    \end{minipage}
+    
+    \vspace{0.05\textwidth}
+    
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region8_cleaned.png}
+        \caption{Popularity in South Asia}
+        \label{south_asia}
+    \end{minipage}%
+    \hspace{0.05\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region4_cleaned.png}
+        \caption{Popularity in the Middle East}
+        \label{middle_east}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/region0_cleaned.png}
+        \caption{Popularity in Africa}
+        \label{africa}
+    \end{minipage}
+\end{figure}
+
+
+This allows us to understand what features make a song popular or not in the different regions.
+
+
+
+In Northern Europe it's energy and danceability, in Southern Europe it's acousticness and valence, in Western Europe it's energy and danceability, in Eastern Europe it's danceability, in North America it's danceability and acousticness, in Latin America it's speechiness and danceability, in Oceania it's danceability and energy, in East Asia it's valence, in South Asia it's danceability and acousticness, in the Middle East it's danceability, in Africa it's loudness, valence, acousticness, duration and tempo.   

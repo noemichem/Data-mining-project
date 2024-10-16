@@ -108,12 +108,220 @@ either 0 or 1, which 0 represents the song most probably will not be popular and
 
 
 
-
+\newpage
 
 \section{Decision Tree}
 
+Decision Tree is a supervised machine learning algorithm that is used for both classification and regression tasks. It works by recursively partitioning the data into subsets based on the values of the input features. The goal is to create a model that predicts the value of the target variable by learning simple decision rules inferred from the data features. Decision trees are easy to interpret and visualize, making them popular for exploratory data analysis and decision-making tasks. In this project, Decision Tree was used to predict whether a song will be popular or not based on their audio features and region affiliation. \\
+
+After splitting the dataset into test and train sets and fitting the model, the Decision Tree model was evaluated using the following metrics: accuracy, confusion matrix and classification report.
 
 
+Accuracy: \textbf{75.97\%}
+
+Confusion Matrix
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|c|c|}
+        \toprule
+        & & \multicolumn{2}{c}{Predicted} \\
+        \cline{3-4}
+        & & 0 & 1 \\
+        \hline
+        \multirow{2}{*}{\textbf{Actual}} & 0 & 46968 & 8372 \\
+        & 1 & 7239 & 2374 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Confusion Matrix}
+    \label{tab:confusion_matrix}
+\end{table}
+
+Classification Report
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
+        \midrule
+        0 & 0.87 & 0.85 & 0.86 & 55340 \\
+        1 & 0.22 & 0.25 & 0.23 & 9613 \\
+        \midrule
+        \textbf{Accuracy} & \multicolumn{4}{c}{0.76} \\
+        \textbf{Macro avg} & 0.54 & 0.55 & 0.55 & 64953 \\
+        \textbf{Weighted avg} & 0.77 & 0.76 & 0.77 & 64953 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Classification Report}
+    \label{tab:classification_report}
+\end{table}
+
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[width=0.6\textwidth]{media/decision_tree_conf_matr.png}
+    \caption{Confusion Matrix of Decision Tree Model}
+
+\end{figure}
+
+The Decision Tree Classifier can be shown:
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.9\textwidth]{media/decision_tree.png}
+    \caption{Decision Tree Classifier}
+    \label{fig:decision_tree}
+\end{figure}
+
+%Show this on the results section
+
+\newpage
+The Decision Tree model was also used to determine the feature importance of the audio features and region affiliation in predicting song popularity. The feature importance was calculated based on the Gini impurity of each feature, which measures the node's impurity reduction due to the feature. 
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[width=0.6\textwidth]{media/dt_global_feature_importance.png}
+    \caption{Importance of Decision Tree Model}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_north_eu.png}
+        \caption{Feature Importance in North Europe}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_south_eu.png}
+        \caption{Feature Importance in South Europe}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_west_eu.png}
+        \caption{Feature Importance in Western Europe}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_east_eu.png}
+        \caption{Feature Importance in Eastern Europe}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_north_amer.png}
+        \caption{Feature Importance in North America}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feature_importance_lat_america.png}
+        \caption{Feature Importance in Latin America}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_oce.png}
+        \caption{Feature Importance in Oceania}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_east_asia.png}
+        \caption{Feature Importance in East Asia}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_south_asia.png}
+        \caption{Feature Importance in South Asia}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_middle_east.png}
+        \caption{Feature Importance in Middle East}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/dt_feat_imp_afr.png}
+        \caption{Feature Importance in Africa}
+    \end{minipage}
+\end{figure}
+
+
+Region: Latin America (Code 3) - Important Features and Their Mean Values:
+Feature: speechiness, Mean Value: 0.11
+Feature: acousticness, Mean Value: 0.29
+
+Region: East Asia (Code 1) - Important Features and Their Mean Values:
+Feature: speechiness, Mean Value: 0.08
+Feature: acousticness, Mean Value: 0.30
+
+Region: Eastern Europe (Code 2) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.66
+Feature: loudness, Mean Value: -7.34
+
+Region: Middle East (Code 4) - Important Features and Their Mean Values:
+Feature: loudness, Mean Value: -7.63
+Feature: duration\_ms, Mean Value: 213894.57
+
+Region: North America (Code 5) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.66
+Feature: speechiness, Mean Value: 0.13
+Feature: duration\_ms, Mean Value: 206987.98
+
+Region: Northern Europe (Code 6) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.64
+Feature: duration\_ms, Mean Value: 203514.75
+
+Region: Oceania (Code 7) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.65
+Feature: duration\_ms, Mean Value: 213396.98
+
+Region: South Asia (Code 8) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.62
+Feature: loudness, Mean Value: -7.39
+Feature: duration\_ms, Mean Value: 222230.31
+
+Region: Southern Europe (Code 9) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.65
+Feature: energy, Mean Value: 0.65
+Feature: loudness, Mean Value: -7.02
+
+Region: Western Europe (Code 10) - Important Features and Their Mean Values:
+Feature: danceability, Mean Value: 0.67
+Feature: loudness, Mean Value: -7.26
+Feature: instrumentalness, Mean Value: 0.06
+Feature: duration\_ms, Mean Value: 205864.40
+
+Region: Africa (Code 0) - Important Features and Their Mean Values:
+Feature: instrumentalness, Mean Value: 0.04
+Feature: liveness, Mean Value: 0.17
+
+
+Danceability is an important feature in the majority of the regions, which are: Eastern Europe, North America, Northern Europe, Oceania, South Asia, Southern Europe, Western Europe.
+
+
+\newpage
 
 \section{Random Forest}
 Random Forest is an ensemble learning method that constructs a multitude of decision trees during
@@ -126,7 +334,7 @@ In this project, Random Forest was used to predict whether the song will be popu
 features and release region. \\
 
 
-
+\newpage
 
 \section{Naive Bayes}
 Naive Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
