@@ -31,47 +31,48 @@ different features of the songs. According to the Random Forest model globally \
 algorithm, which allows it to capture intricate patterns and interactions in the data that other models may not. Beside having the most important feature globally,
 also feature importance is done for each region seperately. This analysis help to understand how the music tastes of different regions are shaped by audio features. 
 
+
+\newpage
 \textbf{Global Feature Importance Extracted From Different Models:}
-
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[width=0.6\textwidth]{media/random_forest_feature_imp_global.png}
-    \caption{Global Feature Importance With Using Random Forests Model}
-
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/random_forest_feature_imp_global.png}
+        \caption{Global Feature Importance Using Random Forests Model}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/logistic_reg_feature_imp_global.png}
+        \caption{Global Feature Importance Using Logistic Regression Model}
+    \end{minipage}
 \end{figure}
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[width=0.6\textwidth]{media/logistic_reg_feature_imp_global.png}
-    \caption{Global Feature Importance With Using Logistic Regression Model}
-
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/decision_tree_fea_imp_global.png}
+        \caption{Global Feature Importance Using Decision Tree Model}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Space between the two figures
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/naive_bayes_fea_imp_global.png}
+        \caption{Global Feature Importance Using Naive Bayes Model}
+    \end{minipage}
 \end{figure}
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[width=0.6\textwidth]{media/decision_tree_fea_imp_global.png}
-    \caption{Global Feature Importance With Using Decision Tree Model}
-
-\end{figure}
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[width=0.6\textwidth]{media/naive_bayes_fea_imp_global.png}
-    \caption{Global Feature Importance With Using Naive Bayes Model}
-
-\end{figure}
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[width=0.6\textwidth]{media/random_forest_feature_imp_global.png} %change it with knn
-    \caption{Global Feature Importance With Using KNN Model}
-
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{media/random_forest_feature_imp_global.png} %change it with knn picture
+        \caption{Global Feature Importance Using KNN Model}
+    \end{minipage}
 \end{figure}
 
-
-
-
-
+\newpage
 \textbf{Feature Importance for Each Region Extracted From Random Forest Model:}
-
-
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -86,7 +87,6 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in South Europe}
     \end{minipage}
 \end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -101,7 +101,6 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in Eastern Europe}
     \end{minipage}
 \end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -116,7 +115,6 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in Latin America}
     \end{minipage}
 \end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -131,7 +129,6 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in East Asia}
     \end{minipage}
 \end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -146,7 +143,6 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in Middle East}
     \end{minipage}
 \end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -155,6 +151,8 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Feature Importance in Africa}
     \end{minipage}
 \end{figure}
+
+\clearpage 
 
 \textbf{Important Features for Each Region and Their Mean Values:}
 
@@ -196,4 +194,3 @@ Feature: tempo - Mean Value: 120.90
 Region: Africa (Code 0) \\
 Feature: loudness - Mean Value: -7.608736\\
 Feature: tempo - Mean Value: 120.407525
-

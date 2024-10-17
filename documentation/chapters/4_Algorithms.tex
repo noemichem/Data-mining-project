@@ -25,13 +25,17 @@
 
 \section{Logistic Regression}
 Logistic regression is one of the supervised machine learning algorithms to
-compute classification problems. It is used to predict the probability of a
-categorical dependent variable. In this project's case, logistic regression is used to predict
+compute classification problems where the output is binary.
+It is based on the idea of modeling the probability of a certain class or event, in this case whether the song will be popular or not with the values of 0 and 1.
+Unlike linear regression which predicts continuous values, logistic regression predicts categorical outcomes by applying a logistic function to the input data.
+In this project's case, logistic regression is used to predict
 whether a song will be popular or not depends on where it will be released and the 
 audio features of the song. Logistic regression is a statistical method for 
 predicting binary outcomes from the data. The output of the logistic regression is values
 either 0 or 1, which 0 represents the song most probably will not be popular and 
 1 represents the song most probably will be popular. \\
+
+
 
 Accuracy: \textbf{85.42\%}
 
@@ -91,7 +95,6 @@ After splitting the dataset into test and train sets and fitting the model, the 
 
 Accuracy: \textbf{75.97\%}
 
-
 Classification Report
 \begin{table}[h]
     \centering
@@ -110,8 +113,7 @@ Classification Report
     \caption{Classification Report}
     \label{tab:classification_report}
 \end{table}
-
-
+ 
 \begin{figure}[h] 
     \centering 
     \includegraphics[width=0.6\textwidth]{media/decision_tree_conf_matr.png}
@@ -128,11 +130,7 @@ The Decision Tree Classifier can be shown:
     \label{fig:decision_tree}
 \end{figure}
 
-%Show this on the results section
 
-
-
-\newpage
 
 \section{Random Forest}
 Random Forest is an ensemble learning method that constructs a multitude of decision trees during
@@ -143,10 +141,28 @@ subsets of the data and combining their predictions to improve the overall perfo
 is known for its robustness, scalability, and ability to handle high-dimensional data with ease.
 In this project, Random Forest was used to predict whether the song will be popular or not based on their audio
 features and release region. \\
+The concept of Random Forest is based on Bagging (Bootsrap Aggregating) which is a technique to reduce the variance of the model
+by averaging the predictions of multiple models. Random Forest builds multiple decision trees and merges them together to get a more
+accurate and stable prediction.
+\\
+\\
+Mathematically, if \( T_1, T_2, \dots, T_B \) are the \( B \) decision trees in the forest, and \( h(x) \) is the output prediction of a single tree for input \( x \), the Random Forest prediction for classification is:
 
+\[
+\hat{y} = \text{mode} \left( T_1(x), T_2(x), \dots, T_B(x) \right)
+\]
+
+For regression, the final prediction is the average:
+
+\[
+\hat{y} = \frac{1}{B} \sum_{i=1}^{B} T_i(x)
+\]
+\\
+\\
+\\
 Accuracy: \textbf{85.67\%}
 
-
+\newpage
 Classification Report
 \begin{table}[h]
     \centering
@@ -174,7 +190,7 @@ Classification Report
 \end{figure}
 
 
-\newpage
+
 
 \section{Naive Bayes}
 Naive Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
