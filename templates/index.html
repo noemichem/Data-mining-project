@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Popularity Prediction</title>
+</head>
+<body>
+    <h1>Predict Song Popularity</h1>
+    
+    <form action="/predict" method="POST">
+        <label for="region">Select Region:</label>
+        <select name="region" id="region">
+            {% for code, name in regions.items() %}
+            <option value="{{ code }}">{{ name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Danceability:</label>
+        <input type="number" step="any" name="danceability" required><br><br>
+
+        <label>Energy:</label>
+        <input type="number" step="any" name="energy" required><br><br>
+
+        <label>Key:</label>
+        <input type="number" name="key" required><br><br>
+
+        <label>Loudness:</label>
+        <input type="number" step="any" name="loudness" required><br><br>
+
+        <label>Mode:</label>
+        <input type="number" name="mode" required><br><br>
+
+        <label>Speechiness:</label>
+        <input type="number" step="any" name="speechiness" required><br><br>
+
+        <label>Acousticness:</label>
+        <input type="number" step="any" name="acousticness" required><br><br>
+
+        <label>Instrumentalness:</label>
+        <input type="number" step="any" name="instrumentalness" required><br><br>
+
+        <label>Liveness:</label>
+        <input type="number" step="any" name="liveness" required><br><br>
+
+        <label>Valence:</label>
+        <input type="number" step="any" name="valence" required><br><br>
+
+        <label>Tempo:</label>
+        <input type="number" step="any" name="tempo" required><br><br>
+
+        <label>Duration (ms):</label>
+        <input type="number" name="duration_ms" required><br><br>
+
+        <label>Time Signature:</label>
+        <input type="number" name="time_signature" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+    <h2>Prediction: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
