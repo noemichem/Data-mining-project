@@ -62,14 +62,7 @@ also feature importance is done for each region seperately. This analysis help t
         \caption{Global Feature Importance Using Naive Bayes Model}
     \end{minipage}
 \end{figure}
-\begin{figure}[h]
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{media/random_forest_feature_imp_global.png} %change it with knn picture
-        \caption{Global Feature Importance Using KNN Model}
-    \end{minipage}
-\end{figure}
+
 
 \newpage
 \textbf{Feature Importance for Each Region Extracted From Random Forest Model:}
@@ -156,41 +149,94 @@ also feature importance is done for each region seperately. This analysis help t
 
 \textbf{Important Features for Each Region and Their Mean Values:}
 
-Region: Latin America (Code 3)\\
-Feature: tempo - Mean Value: 122.61
+Region: Latin America (Code 3) - Top 5 Important Features and Their Mean Values:
+Feature: tempo, Importance: 0.1001, Mean Value: 122.61
+Feature: acousticness, Importance: 0.0979, Mean Value: 0.29
+Feature: loudness, Importance: 0.0974, Mean Value: -6.71
+Feature: duration\_ms, Importance: 0.0972, Mean Value: 217127.50
+Feature: speechiness, Importance: 0.0965, Mean Value: 0.11
 
-Region: East Asia (Code 1)\\
-Feature: loudness - Mean Value: -6.86\\
-Feature: tempo - Mean Value: 121.52\\
-Feature: duration\_ms - Mean Value: 229571.73
+Region: East Asia (Code 1) - Top 5 Important Features and Their Mean Values:
+Feature: tempo, Importance: 0.1027, Mean Value: 121.52
+Feature: duration\_ms, Importance: 0.1005, Mean Value: 229571.73
+Feature: loudness, Importance: 0.1004, Mean Value: -6.86
+Feature: acousticness, Importance: 0.0986, Mean Value: 0.30
+Feature: speechiness, Importance: 0.0967, Mean Value: 0.08
 
-Region: Eastern Europe (Code 2) \\
-Feature: tempo - Mean Value: 122.332345
+Region: Eastern Europe (Code 2) - Top 5 Important Features and Their Mean Values:
+Feature: tempo, Importance: 0.0995, Mean Value: 122.33
+Feature: loudness, Importance: 0.0993, Mean Value: -7.34
+Feature: speechiness, Importance: 0.0975, Mean Value: 0.13
+Feature: duration\_ms, Importance: 0.0966, Mean Value: 205515.98
+Feature: acousticness, Importance: 0.0959, Mean Value: 0.24
 
-Region: Middle East (Code 4) \\
-Feature: duration\_ms - Mean Value: 213894.57
+Region: Middle East (Code 4) - Top 5 Important Features and Their Mean Values:
+Feature: duration\_ms, Importance: 0.1019, Mean Value: 213894.57
+Feature: loudness, Importance: 0.0988, Mean Value: -7.63
+Feature: tempo, Importance: 0.0976, Mean Value: 120.14
+Feature: acousticness, Importance: 0.0961, Mean Value: 0.30
+Feature: danceability, Importance: 0.0954, Mean Value: 0.64
 
-Region: North America (Code 5) \\
-Feature: loudness - Mean Value: -6.99\\
-Feature: duration\_ms -  Mean Value: 206987.98
+Region: North America (Code 5) - Top 5 Important Features and Their Mean Values:
+Feature: duration\_ms, Importance: 0.1050, Mean Value: 206987.98
+Feature: loudness, Importance: 0.1005, Mean Value: -6.99
+Feature: tempo, Importance: 0.0988, Mean Value: 121.36
+Feature: speechiness, Importance: 0.0972, Mean Value: 0.13
+Feature: danceability, Importance: 0.0958, Mean Value: 0.66
 
-Region: Northern Europe (Code 6) \\
-Feature: duration\_ms - Mean Value: 203514.75
+Region: Northern Europe (Code 6) - Top 5 Important Features and Their Mean Values:
+Feature: duration\_ms, Importance: 0.1021, Mean Value: 203514.75
+Feature: loudness, Importance: 0.0995, Mean Value: -7.35
+Feature: tempo, Importance: 0.0972, Mean Value: 121.29
+Feature: danceability, Importance: 0.0965, Mean Value: 0.64
+Feature: acousticness, Importance: 0.0963, Mean Value: 0.23
 
-Region: Oceania (Code 7) \\
-Feature: duration\_ms - Mean Value: 213396.98
+Region: Oceania (Code 7) - Top 5 Important Features and Their Mean Values:
+Feature: duration\_ms, Importance: 0.1061, Mean Value: 213396.98
+Feature: tempo, Importance: 0.0986, Mean Value: 120.82
+Feature: danceability, Importance: 0.0981, Mean Value: 0.65
+Feature: loudness, Importance: 0.0977, Mean Value: -7.05
+Feature: acousticness, Importance: 0.0962, Mean Value: 0.23
 
-Region: South Asia (Code 8) \\
-Feature: loudness - Mean Value: -7.39\\
-Feature: duration\_ms - Mean Value: 222230.31
+Region: South Asia (Code 8) - Top 5 Important Features and Their Mean Values:
+Feature: loudness, Importance: 0.1010, Mean Value: -7.39
+Feature: duration\_ms, Importance: 0.1006, Mean Value: 222230.31
+Feature: tempo, Importance: 0.0982, Mean Value: 119.92
+Feature: acousticness, Importance: 0.0981, Mean Value: 0.36
+Feature: danceability, Importance: 0.0960, Mean Value: 0.62
 
-Region: Southern Europe (Code 9) \\
-Feature: loudness - Mean Value: -7.02
+Region: Southern Europe (Code 9) - Top 5 Important Features and Their Mean Values:
+Feature: loudness, Importance: 0.1012, Mean Value: -7.02
+Feature: duration\_ms, Importance: 0.0996, Mean Value: 210862.34
+Feature: tempo, Importance: 0.0986, Mean Value: 121.24
+Feature: speechiness, Importance: 0.0968, Mean Value: 0.12
+Feature: acousticness, Importance: 0.0965, Mean Value: 0.27
 
-Region: Western Europe (Code 10) \\
-Feature: loudness - Mean Value: -7.26\\
-Feature: tempo - Mean Value: 120.90
+Region: Western Europe (Code 10) - Top 5 Important Features and Their Mean Values:
+Feature: loudness, Importance: 0.1006, Mean Value: -7.26
+Feature: tempo, Importance: 0.1004, Mean Value: 120.90
+Feature: duration\_ms, Importance: 0.0990, Mean Value: 205864.40
+Feature: acousticness, Importance: 0.0965, Mean Value: 0.25
+Feature: speechiness, Importance: 0.0960, Mean Value: 0.15
 
-Region: Africa (Code 0) \\
-Feature: loudness - Mean Value: -7.608736\\
-Feature: tempo - Mean Value: 120.407525
+Region: Africa (Code 0) - Top 5 Important Features and Their Mean Values:
+Feature: loudness, Importance: 0.0992, Mean Value: -7.61
+Feature: tempo, Importance: 0.0987, Mean Value: 120.41
+Feature: duration\_ms, Importance: 0.0976, Mean Value: 219551.52
+Feature: acousticness, Importance: 0.0963, Mean Value: 0.26
+Feature: liveness, Importance: 0.0962, Mean Value: 0.17
+
+--- Feature Comparison Across Regions ---
+
+Feature: danceability
+This feature is among the top 5 in these regions: Middle East, North America, Northern Europe, Oceania, South Asia
+
+Feature: energy is not in the top 5 of any region.
+
+Feature: tempo
+This feature is among the top 5 in these regions: Latin America, East Asia, Eastern Europe, Middle East, North America, Northern Europe, Oceania, South Asia, Southern Europe, Western Europe, Africa
+
+Feature: loudness
+This feature is among the top 5 in these regions: Latin America, East Asia, Eastern Europe, Middle East, North America, Northern Europe, Oceania, South Asia, Southern Europe, Western Europe, Africa
+
+Feature: valence is not in the top 5 of any region.

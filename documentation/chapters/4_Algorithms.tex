@@ -1,13 +1,25 @@
 \chapter{Algorithms}
 
+To further investigate the relationship between audio features, region, and song popularity, several machine learning algorithms were applied to the dataset. The goal was to build a model that could predict whether a song would be popular or not based on its audio features and release region. The following algorithms were used in this project:
+
+\begin{itemize}
+    \item Logistic Regression
+    \item Decision Tree
+    \item Random Forest
+    \item Naive Bayes
+    \item K-Nearest Neighbors
+\end{itemize}
+
+The initial steps were the same for all algorithms.
+
 \subsection{Implementation Steps}
 \begin{itemize}
-    \item \textbf{Data Preparation: } The dataset was split into X as all the audio features and region and Y as popular.
-    The popular column used as the target variable. Then the dataset is split into training and testing sets using an 80-20 split.
-    \item \textbf{Feature Scaling: } Features were scaled using the \textit{StandardScaler} from the \textit{sklearn.preprocessing} library to 
-    normalize the data and to ensure that all feautres contribute equally to the distance calculation involved in the model, which helps improve the convergence of the algorithm.
+    \item \textbf{Data Preparation: } The dataset is split into X and Y: X containing the audio features and region, and Y containing the popularity column.
+    The popularity column is used as the target variable. Then the dataset is split into training and testing sets using an 80/20 partition.
+    \item \textbf{Feature Scaling: } The features are scaled using the \textit{StandardScaler} from the \textit{sklearn.preprocessing} library. The data is normalized to ensure that all feautres contribute equally to the distance calculation involved in the model, which helps improve the convergence of the algorithm.
     \item \textbf{Handling Class Imbalancae: } To address potential class imbalance in the dataset, the \textit{Synthetic Minority Over-sampling Technique (SMOTE)} was applied, which
-    created synthetic samples of the minorty class (popular songs).
+    created synthetic samples of the minorty class (popular songs). 
+    %was this used for all models?
     \item \textbf{Model Training: } The algorithm models were trained using the scaled training set. The model was
     configured with a maximum iteration limit of 2000 and class weight balanced to give equal importance to both classes during the training.
     \item \textbf{Cross-Validation: } To evaluate the model's performance more robustly, 5-fold cross-validation was performed.
@@ -15,8 +27,8 @@
     fold. This process is repeated five times, each time using a different fold for validation.
     \item \textbf{Predictions: } Predictions were made on the scaled test set, and probabilities were calculated for class membership. A threshold of 0.3 was used to adjust the predicted probabilities to determine class labels.
     \item \textbf{Model Evaluation: } The model was evaluated using the confusion matrix, classification report, which included metrics such as precicion, recall, and F1-score.
-    \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the models. Both feature importance for whole dataset and feature importance for each specific region has been applied. As a result of this dominant features to determine populartiy of the songs were found.
-    \item \textbf{Regional Analysis: } Regional analysis was performed to better understand how different audio features contribute to song populartiy across various regions.
+    \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the models. Both feature importance for the whole dataset and feature importance for each specific region has been applied. As a result, dominant features to determine the populartiy of the songs were found.
+    \item \textbf{Regional Analysis: } Regional analysis was performed to better understand how different audio features contribute to make a song popular across various regions.
 \end{itemize} 
 
 
@@ -254,6 +266,8 @@ Classification Report
 
 \section{K-Nearest Neighbors}
 
+K-Nearest Neighbors (KNN) is a simple, instance-based learning algorithm that is used for classification and regression tasks. It is a non-parametric method that makes predictions based on the similarity of the input data to the training data. KNN is a lazy learning algorithm, meaning that it does not learn a model during training but instead stores the training data and makes predictions at runtime. The algorithm works by calculating the distance between the input data and the training data and selecting the K-nearest neighbors to make a prediction. The class label of the majority of the neighbors is assigned to the input data as the predicted class. In this project, KNN was used to predict whether a song will be popular or not based on its audio features and release region. \\
+
 Accuracy: \textbf{83.92\%}
 
 
@@ -282,3 +296,23 @@ Classification Report
     \caption{Confusion Matrix of KNN Model}
 
 \end{figure}
+
+\newpage
+
+The KNN algorithm allows us to calculate and plot the ROC curve, which is a graphical representation of the true positive rate against the false positive rate. The ROC curve is useful for evaluating the performance of a classification model and comparing different models. The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. A higher AUC value indicates a better-performing model.
+True Positive Rate (Sensitivity/Recall) on the y-axis: This shows how often the model correctly identifies a popular song (i.e., correctly predicts a "positive" class).
+False Positive Rate on the x-axis: This shows how often the model incorrectly predicts a song as popular when it's not (i.e., incorrectly predicts a "positive" class when it should have been negative).
+The red dashed line represents a random classifier, meaning if the model was making random predictions, the ROC curve would follow this line (AUC = 0.5).
+The ROC curve for the KNN model is shown below:
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{media/roc_curve.png}
+    \caption{ROC Curve of KNN Model}
+    \label{fig:knn_roc_curve}
+\end{figure}
+
+An AUC of 0.63 suggests that the KNN model is performing better than random, but it is still relatively weak.
+A perfect model would have an AUC of 1.0, where it correctly distinguishes between popular and non-popular songs without error.
+
+This means that it is able to capture some patterns in the data, but the performance is not particularly strong. 
