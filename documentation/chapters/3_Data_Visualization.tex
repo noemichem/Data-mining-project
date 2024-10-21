@@ -13,7 +13,7 @@ The final dataset has 189297 rows × 15 columns. The columns are as follows:
     \caption{Column names in the dataset}
 \end{table}
 
-By visualizing and exploring the final dataset, we can underline the differeces with the raw dataset. This means that the preprocessing phase was fundamental to obtain a clean dataset.
+By visualizing and exploring the final dataset, we can underline the differeces with the raw dataset. This shows that the preprocessing phase was fundamental to obtain a clean dataset.
 
 \begin{verbatim}
     # Display the first few rows of the dataset
@@ -30,7 +30,7 @@ By visualizing and exploring the final dataset, we can underline the differeces 
         \label{df.info()}
     \end{figure}
 
-    One of the first thing to notice is how the memory usage has been reduced significantly. This is due to the removal of columns that were not useful for the analysis. In fact, the number of columns has been reduced from 25 to 15.
+    One of the first thing to notice is how the memory usage has been reduced significantly. This is due to the removal of columns that were not useful for the analysis. In fact, the number of columns has been reduced from 26 to 15.
     
     \newpage
     \begin{verbatim}
@@ -75,6 +75,11 @@ This is the boxplot of the audio features:
     \label{boxplot}
 \end{figure}
 
+
+Many features have outliers (especially loudness, instrumentalness, speechiness, and duration\_ms), which means they have songs that are very different from the "average" in terms of these attributes.
+Features like mode and time\_signature have almost no variation, thus they may not be useful for predicting the target variable (popularity).
+
+
 \newpage
 
 This is the heatmap of the correlation matrix:
@@ -86,16 +91,15 @@ This is the heatmap of the correlation matrix:
     \label{correlation}
 \end{figure}
 
-\newpage
+The heatmap shows that the audio features have a mix of positive and negative correlations with each other. The most notable correlations are:
+\begin{itemize}
+    \item 
+    Energy and Loudness: strong positive correlation (0.74). Loud songs tend to also have high energy, which makes sense musically.
+    \item Energy and Acousticness: strong negative correlation  (-0.61). Acoustic songs tend to have lower energy levels, which aligns with expectations as acoustic songs are often more mellow.
+\end{itemize}
 
-This is the scatter matrix of the audio features:
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.9\textwidth]{media/scatter_matrix_cleaned.png} 
-    \caption{Scatter matrix of audio features.}
-    \label{scatter_matrix}
-\end{figure}
+This also shows us that no single feature stands out as highly predictive of song popularity based on these correlations, which suggests that popularity might be determined by a complex interaction of features rather than individual attributes. 
 
 
 
@@ -200,6 +204,33 @@ We can also visualize the popularity of each feature in the different regions:
 
 This allows us to understand what features make a song popular or not in the different regions.
 
+\begin{itemize}
+    \item \textbf{Northern Europe}: energy and danceability
+    \item \textbf{Southern Europe}: acousticness and valence
+    \item \textbf{Eastern Europe}: danceability
+    \item \textbf{North America}: danceability and acousticness
+    \item \textbf{Latin America}: speechiness and danceability
+    \item \textbf{Oceania}: danceability and energy
+    \item \textbf{East Asia}: valence
+    \item \textbf{South Asia}: danceability and acousticness
+    \item \textbf{Middle East}: danceability
+    \item \textbf{Africa}: loudness, valence, acousticness, duration and tempo
+    
+\end{itemize}
+   
 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{media/features_preferences.png}  
+        \caption{Global preferences}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.54\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{media/feature_preferences_regions.png}  
+        \caption{Regional preferences}
+    \end{minipage}
+\end{figure}
 
-In Northern Europe it's energy and danceability, in Southern Europe it's acousticness and valence, in Western Europe it's energy and danceability, in Eastern Europe it's danceability, in North America it's danceability and acousticness, in Latin America it's speechiness and danceability, in Oceania it's danceability and energy, in East Asia it's valence, in South Asia it's danceability and acousticness, in the Middle East it's danceability, in Africa it's loudness, valence, acousticness, duration and tempo.   
