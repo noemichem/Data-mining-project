@@ -5,6 +5,8 @@
 
 \chapter{Results}
 
+\section{Results of the Models}
+
 \begin{table}[htbp]
     \centering
     \begin{tabular}{|l|c|c|}
@@ -20,16 +22,27 @@
     \end{table}
     
 According to the results shown in the table above, Random Forests and Logistic Regression have the highest accuracy values. However Random Forests has 
-higher value on weightes Average of Precision and if the confusion matrixs are compared it can be seen that random forests has higher 
-probability of making correct predictions. All those findings makes random forests the best model for this dataset with 84.67\% accuracy. Except Decision Tree, there are not 
-significant changes between the algortihms but with accuracy 75.97\% Decision Tree is the worst model for this dataset.
+higher value on weights Average of Precision
+%what do you mean by "higher value on weights Average of Precision"?
+and if the confusion matrixes are compared it can be shown that Random Forests has a higher 
+probability of making correct predictions. This makes Random Forests the best model for this dataset with 85.67\% accuracy. 
+In general, all the models have high accuracy values, which indicates that the dataset is well-suited for classification. Even the worst model, Decision Tree, has an accuracy of 75.97\%, which is still a high value.\\
+Furthermore, our accuracy results are better than the article found in the literature, in which the best algorithm, Logistic Regression, had an accuracy of 52\%. This could be due to the fact that the dataset used in the literature was smaller and less diverse than the dataset used in this study.
 \\
-\\
-To be able to construct an efficient model and make better understanding on regions' music tastes it is also important to anaylsis importance of
-different features of the songs. According to the Random Forest model globally \textit{tempo} is the most important feature while for all the other models 
-\textit{dancebility} is the most important feature. This difference can be attributed to the inherent complexity and flexibility of the Random Forest
-algorithm, which allows it to capture intricate patterns and interactions in the data that other models may not. Beside having the most important feature globally,
-also feature importance is done for each region seperately. This analysis help to understand how the music tastes of different regions are shaped by audio features. 
+
+\section{Global Feature Importance Analysis}
+
+It's important to understand the global importance of the features in the dataset to be able to make better predictions.
+
+The Random Forest model shows that globally many features are important for predicting the popularity of a song: \textit{tempo} is the most important, but also \textit{loudness}, \textit{duration}, \textit{acousticness}, \textit{speechiness}, \textit{valence}, \textit{danceability}, \textit{energy} and \textit{liveness} have similarly high values of importance. The least important features are instrumentalness, key, mode and key signature. These last two features were already shown to not be important in the correlation matrix.
+On the other hand, all the other models show that 
+\textit{dancebility} is the most important feature, with a significant difference from the other features.
+
+This difference can be attributed to the inherent complexity and flexibility of the Random Forest
+algorithm, which allows it to capture intricate patterns and interactions in the data that other models may not.\\
+Also the literature supports the danceability as the most important feature for predicting the popularity of a song, with a significant difference from the other features.\\
+
+
 
 
 \newpage
@@ -63,8 +76,15 @@ also feature importance is done for each region seperately. This analysis help t
     \end{minipage}
 \end{figure}
 
-
 \newpage
+
+\section{Regional Feature Importance Analysis}
+
+
+The feature importance is extracted not only globally but also for each region. To do that we decide to consider the Random Forest model as the best model.
+This analysis helps to understand how the music tastes of different regions are shaped by audio features.
+The most important features for each region are shown below. The mean values of these features are also given to help understand the music tastes of each region.
+
 \textbf{Feature Importance for Each Region Extracted From Random Forest Model:}
 \begin{figure}[h]
     \centering
@@ -147,96 +167,158 @@ also feature importance is done for each region seperately. This analysis help t
 
 \clearpage 
 
-\textbf{Important Features for Each Region and Their Mean Values:}
+\subsection{Important Features for Each Region and Their Mean Values:}
 
-Region: Latin America (Code 3) - Top 5 Important Features and Their Mean Values:
-Feature: tempo, Importance: 0.1001, Mean Value: 122.61
-Feature: acousticness, Importance: 0.0979, Mean Value: 0.29
-Feature: loudness, Importance: 0.0974, Mean Value: -6.71
-Feature: duration\_ms, Importance: 0.0972, Mean Value: 217127.50
-Feature: speechiness, Importance: 0.0965, Mean Value: 0.11
+Generally, the different regions tend to have a coherence in the importance of the features. For example, \textit{tempo} and \textit{loudness} are among the top 5 important features in all regions. 
+\textbf{Region: Northern Europe }
+\begin{itemize}
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1021, Mean Value: 203514.75
+    \item \textbf{Feature: loudness}, Importance: 0.0995, Mean Value: -7.35
+    \item \textbf{Feature: tempo}, Importance: 0.0972, Mean Value: 121.29
+    \item \textbf{Feature: danceability}, Importance: 0.0965, Mean Value: 0.64
+    \item \textbf{Feature: acousticness}, Importance: 0.0963, Mean Value: 0.23
+\end{itemize}
 
-Region: East Asia (Code 1) - Top 5 Important Features and Their Mean Values:
-Feature: tempo, Importance: 0.1027, Mean Value: 121.52
-Feature: duration\_ms, Importance: 0.1005, Mean Value: 229571.73
-Feature: loudness, Importance: 0.1004, Mean Value: -6.86
-Feature: acousticness, Importance: 0.0986, Mean Value: 0.30
-Feature: speechiness, Importance: 0.0967, Mean Value: 0.08
+\textbf{Region: Southern Europe }
+\begin{itemize}
+    \item \textbf{Feature: loudness}, Importance: 0.1012, Mean Value: -7.02
+    \item \textbf{Feature: duration\_ms}, Importance: 0.0996, Mean Value: 210862.34
+    \item \textbf{Feature: tempo}, Importance: 0.0986, Mean Value: 121.24
+    \item \textbf{Feature: speechiness}, Importance: 0.0968, Mean Value: 0.12
+    \item \textbf{Feature: acousticness}, Importance: 0.0965, Mean Value: 0.27
+\end{itemize}
 
-Region: Eastern Europe (Code 2) - Top 5 Important Features and Their Mean Values:
-Feature: tempo, Importance: 0.0995, Mean Value: 122.33
-Feature: loudness, Importance: 0.0993, Mean Value: -7.34
-Feature: speechiness, Importance: 0.0975, Mean Value: 0.13
-Feature: duration\_ms, Importance: 0.0966, Mean Value: 205515.98
-Feature: acousticness, Importance: 0.0959, Mean Value: 0.24
+\textbf{Region: Western Europe }
+\begin{itemize}
+    \item \textbf{Feature: loudness}, Importance: 0.1006, Mean Value: -7.26
+    \item \textbf{Feature: tempo}, Importance: 0.1004, Mean Value: 120.90
+    \item \textbf{Feature: duration\_ms}, Importance: 0.0990, Mean Value: 205864.40
+    \item \textbf{Feature: acousticness}, Importance: 0.0965, Mean Value: 0.25
+    \item \textbf{Feature: speechiness}, Importance: 0.0960, Mean Value: 0.15
+\end{itemize}
 
-Region: Middle East (Code 4) - Top 5 Important Features and Their Mean Values:
-Feature: duration\_ms, Importance: 0.1019, Mean Value: 213894.57
-Feature: loudness, Importance: 0.0988, Mean Value: -7.63
-Feature: tempo, Importance: 0.0976, Mean Value: 120.14
-Feature: acousticness, Importance: 0.0961, Mean Value: 0.30
-Feature: danceability, Importance: 0.0954, Mean Value: 0.64
+\textbf{Region: Eastern Europe }
+\begin{itemize}
+    \item \textbf{Feature: tempo}, Importance: 0.0995, Mean Value: 122.33
+    \item \textbf{Feature: loudness}, Importance: 0.0993, Mean Value: -7.34
+    \item \textbf{Feature: speechiness}, Importance: 0.0975, Mean Value: 0.13
+    \item \textbf{Feature: duration\_ms}, Importance: 0.0966, Mean Value: 205515.98
+    \item \textbf{Feature: acousticness}, Importance: 0.0959, Mean Value: 0.24
+\end{itemize}
 
-Region: North America (Code 5) - Top 5 Important Features and Their Mean Values:
-Feature: duration\_ms, Importance: 0.1050, Mean Value: 206987.98
-Feature: loudness, Importance: 0.1005, Mean Value: -6.99
-Feature: tempo, Importance: 0.0988, Mean Value: 121.36
-Feature: speechiness, Importance: 0.0972, Mean Value: 0.13
-Feature: danceability, Importance: 0.0958, Mean Value: 0.66
+\textbf{Region: North America }
+\begin{itemize}
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1050, Mean Value: 206987.98
+    \item \textbf{Feature: loudness}, Importance: 0.1005, Mean Value: -6.99
+    \item \textbf{Feature: tempo}, Importance: 0.0988, Mean Value: 121.36
+    \item \textbf{Feature: speechiness}, Importance: 0.0972, Mean Value: 0.13
+    \item \textbf{Feature: danceability}, Importance: 0.0958, Mean Value: 0.66
+\end{itemize}
 
-Region: Northern Europe (Code 6) - Top 5 Important Features and Their Mean Values:
-Feature: duration\_ms, Importance: 0.1021, Mean Value: 203514.75
-Feature: loudness, Importance: 0.0995, Mean Value: -7.35
-Feature: tempo, Importance: 0.0972, Mean Value: 121.29
-Feature: danceability, Importance: 0.0965, Mean Value: 0.64
-Feature: acousticness, Importance: 0.0963, Mean Value: 0.23
 
-Region: Oceania (Code 7) - Top 5 Important Features and Their Mean Values:
-Feature: duration\_ms, Importance: 0.1061, Mean Value: 213396.98
-Feature: tempo, Importance: 0.0986, Mean Value: 120.82
-Feature: danceability, Importance: 0.0981, Mean Value: 0.65
-Feature: loudness, Importance: 0.0977, Mean Value: -7.05
-Feature: acousticness, Importance: 0.0962, Mean Value: 0.23
+\textbf{Region: Latin America }
+\begin{itemize}
+    \item \textbf{Feature: tempo}, Importance: 0.1001, Mean Value: 122.61
+    \item \textbf{Feature: acousticness}, Importance: 0.0979, Mean Value: 0.29
+    \item \textbf{Feature: loudness}, Importance: 0.0974, Mean Value: -6.71
+    \item \textbf{Feature: duration\_ms}, Importance: 0.0972, Mean Value: 217127.50
+    \item \textbf{Feature: speechiness}, Importance: 0.0965, Mean Value: 0.11
+\end{itemize}
 
-Region: South Asia (Code 8) - Top 5 Important Features and Their Mean Values:
-Feature: loudness, Importance: 0.1010, Mean Value: -7.39
-Feature: duration\_ms, Importance: 0.1006, Mean Value: 222230.31
-Feature: tempo, Importance: 0.0982, Mean Value: 119.92
-Feature: acousticness, Importance: 0.0981, Mean Value: 0.36
-Feature: danceability, Importance: 0.0960, Mean Value: 0.62
+\textbf{Region: Oceania }
+\begin{itemize}
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1061, Mean Value: 213396.98
+    \item \textbf{Feature: tempo}, Importance: 0.0986, Mean Value: 120.82
+    \item \textbf{Feature: danceability}, Importance: 0.0981, Mean Value: 0.65
+    \item \textbf{Feature: loudness}, Importance: 0.0977, Mean Value: -7.05
+    \item \textbf{Feature: acousticness}, Importance: 0.0962, Mean Value: 0.23
+\end{itemize}
 
-Region: Southern Europe (Code 9) - Top 5 Important Features and Their Mean Values:
-Feature: loudness, Importance: 0.1012, Mean Value: -7.02
-Feature: duration\_ms, Importance: 0.0996, Mean Value: 210862.34
-Feature: tempo, Importance: 0.0986, Mean Value: 121.24
-Feature: speechiness, Importance: 0.0968, Mean Value: 0.12
-Feature: acousticness, Importance: 0.0965, Mean Value: 0.27
+\textbf{Region: East Asia }
+\begin{itemize}
+    \item \textbf{Feature: tempo}, Importance: 0.1027, Mean Value: 121.52
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1005, Mean Value: 229571.73
+    \item \textbf{Feature: loudness}, Importance: 0.1004, Mean Value: -6.86
+    \item \textbf{Feature: acousticness}, Importance: 0.0986, Mean Value: 0.30
+    \item \textbf{Feature: speechiness}, Importance: 0.0967, Mean Value: 0.08
+\end{itemize}
 
-Region: Western Europe (Code 10) - Top 5 Important Features and Their Mean Values:
-Feature: loudness, Importance: 0.1006, Mean Value: -7.26
-Feature: tempo, Importance: 0.1004, Mean Value: 120.90
-Feature: duration\_ms, Importance: 0.0990, Mean Value: 205864.40
-Feature: acousticness, Importance: 0.0965, Mean Value: 0.25
-Feature: speechiness, Importance: 0.0960, Mean Value: 0.15
+\textbf{Region: South Asia }
+\begin{itemize}
+    \item \textbf{Feature: loudness}, Importance: 0.1010, Mean Value: -7.39
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1006, Mean Value: 222230.31
+    \item \textbf{Feature: tempo}, Importance: 0.0982, Mean Value: 119.92
+    \item \textbf{Feature: acousticness}, Importance: 0.0981, Mean Value: 0.36
+    \item \textbf{Feature: danceability}, Importance: 0.0960, Mean Value: 0.62
+\end{itemize}
 
-Region: Africa (Code 0) - Top 5 Important Features and Their Mean Values:
-Feature: loudness, Importance: 0.0992, Mean Value: -7.61
-Feature: tempo, Importance: 0.0987, Mean Value: 120.41
-Feature: duration\_ms, Importance: 0.0976, Mean Value: 219551.52
-Feature: acousticness, Importance: 0.0963, Mean Value: 0.26
-Feature: liveness, Importance: 0.0962, Mean Value: 0.17
 
---- Feature Comparison Across Regions ---
+\textbf{Region: Middle East }
+\begin{itemize}
+    \item \textbf{Feature: duration\_ms}, Importance: 0.1019, Mean Value: 213894.57
+    \item \textbf{Feature: loudness}, Importance: 0.0988, Mean Value: -7.63
+    \item \textbf{Feature: tempo}, Importance: 0.0976, Mean Value: 120.14
+    \item \textbf{Feature: acousticness}, Importance: 0.0961, Mean Value: 0.30
+    \item \textbf{Feature: danceability}, Importance: 0.0954, Mean Value: 0.64
+\end{itemize}
 
-Feature: danceability
-This feature is among the top 5 in these regions: Middle East, North America, Northern Europe, Oceania, South Asia
 
-Feature: energy is not in the top 5 of any region.
+\textbf{Region: Africa }
+\begin{itemize}
+    \item \textbf{Feature: loudness}, Importance: 0.0992, Mean Value: -7.61
+    \item \textbf{Feature: tempo}, Importance: 0.0987, Mean Value: 120.41
+    \item \textbf{Feature: duration\_ms}, Importance: 0.0976, Mean Value: 219551.52
+    \item \textbf{Feature: acousticness}, Importance: 0.0963, Mean Value: 0.26
+    \item \textbf{Feature: liveness}, Importance: 0.0962, Mean Value: 0.17
+\end{itemize}
 
-Feature: tempo
-This feature is among the top 5 in these regions: Latin America, East Asia, Eastern Europe, Middle East, North America, Northern Europe, Oceania, South Asia, Southern Europe, Western Europe, Africa
+\subsection{Interpretation of the Results}
+\begin{itemize}
+    \item\textbf{Tempo Variation}
+    
+While tempo is among the top 5 most important features in all regions, there is a clear variation in its mean values:
+The highest tempo is in Latin America (122.61), while the lowest is in South Asia (119.92).
+This suggests that Latin American music tends to have a slightly faster rhythm compared to South Asian music. These differences could reflect the regions' cultural preferences for more energetic or relaxed musical styles.
+\item\textbf{Loudness Preferences}
 
-Feature: loudness
-This feature is among the top 5 in these regions: Latin America, East Asia, Eastern Europe, Middle East, North America, Northern Europe, Oceania, South Asia, Southern Europe, Western Europe, Africa
+Loudness is another common feature across all regions, yet it shows notable differences in mean values:
+For instance, North America (-6.99) and Latin America (-6.71) tend to prefer louder music compared to regions like Eastern Europe (-7.34) and South Asia (-7.39).
+These differences could indicate varying preferences for more dynamic or intense sound production, with North and Latin America leaning toward more "in-your-face" soundscapes, while regions like Eastern Europe and South Asia favor softer or more subdued sound levels.
+\item\textbf{Regional Focus on Danceability}
 
-Feature: valence is not in the top 5 of any region.
+Danceability is present in the top 5 important features in five regions: Middle East, North America, Northern Europe, Oceania, and South Asia.
+This suggests that these regions emphasize the rhythmic elements of music that facilitate dancing, perhaps reflecting a stronger cultural or social inclination towards dance-centric activities. Regions like Eastern Europe or East Asia, where danceability is not in the top 5, may prioritize other aspects of music like lyrical content or acoustic richness.
+\item\textbf{Acousticness Differences}
+
+Acousticness, which measures the likelihood of a track being acoustic, shows varying importance across regions:
+South Asia has a relatively high mean acousticness (0.36), while Latin America and Oceania have lower values (0.29 and 0.23 respectively).
+This could indicate a stronger preference for traditional, organic instruments in South Asia, whereas Latin America and Oceania might favor more synthesized or electronic soundscapes.
+\item\textbf{Speechiness and Spoken Elements}
+
+Speechiness is featured in several regions, but the mean values show regional differences in how much spoken word is present in music:
+For instance, Latin America (0.11) and East Asia (0.08) have lower speechiness compared to Eastern Europe (0.13) and North America (0.13).
+This variation may reflect differing musical traditions: regions with lower speechiness may prefer more melodic, sung vocals, while those with higher values could incorporate more rap or spoken word elements.
+\item\textbf{Duration of Tracks}
+
+The duration\_ms of tracks also varies across regions:
+East Asia has the longest average duration (229571.73 ms), while Northern Europe has shorter tracks (203514.75 ms).
+Longer tracks in East Asia may suggest a preference for more complex or drawn-out compositions, while shorter tracks in Northern Europe may reflect a preference for more concise and easily consumable music.
+\item\textbf{Regional Absence of Energy and Valence}
+
+Surprisingly, energy and valence (happiness or emotional positivity) are absent from the top 5 important features in all regions.
+This suggests that, although energy and valence are often associated with the overall feel or mood of a track, they are not as influential in shaping regional music preferences as tempo, loudness, or other features like acousticness or danceability. It could mean that other characteristics are more decisive in defining regional music tastes.
+\item\textbf{Cultural and Historical Contexts}
+
+The preferences for certain features (like acousticness in South Asia or danceability in Oceania) could be influenced by regional cultural contexts:
+South Asia's higher acousticness might reflect a deeper connection to traditional, acoustic music forms like classical or folk music.
+Oceania’s preference for danceability could be tied to its strong tradition of social and communal dance, particularly in Pacific Island cultures.
+\item\textbf{Impact of Globalization}
+
+The fact that features like tempo and loudness are consistently important across all regions may indicate a certain degree of global musical homogenization due to the influence of global pop and electronic music.
+However, the variation in mean values suggests that, despite global influences, regional music cultures maintain distinct preferences and characteristics.
+\item\textbf{Evolution of Regional Music Preferences}
+
+Over time, these differences in preferences might evolve as global trends influence local tastes, or as regions increasingly revert to traditional forms in response to external influences.
+Monitoring how these values change over time could offer insights into the trajectory of regional music trends.
+These considerations highlight the diversity in music preferences across regions, while also emphasizing certain universal elements that transcend cultural boundaries. Understanding these nuances helps map out how cultural and social factors influence regional music trends.
+\end{itemize}

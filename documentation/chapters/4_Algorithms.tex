@@ -36,16 +36,15 @@ The initial steps were the same for all algorithms.
 
 
 \section{Logistic Regression}
-Logistic regression is one of the supervised machine learning algorithms to
-compute classification problems where the output is binary.
-It is based on the idea of modeling the probability of a certain class or event, in this case whether the song will be popular or not with the values of 0 and 1.
-Unlike linear regression which predicts continuous values, logistic regression predicts categorical outcomes by applying a logistic function to the input data.
-In this project's case, logistic regression is used to predict
-whether a song will be popular or not depends on where it will be released and the 
-audio features of the song. Logistic regression is a statistical method for 
-predicting binary outcomes from the data. The output of the logistic regression is values
-either 0 or 1, which 0 represents the song most probably will not be popular and 
-1 represents the song most probably will be popular. \\
+Logistic regression a supervised machine learning algorithm that is used to
+compute classification problems with a binary output.
+It is based on the idea of modeling the probability of a certain class or event.
+Unlike linear regression, which predicts continuous values, logistic regression predicts categorical outcomes by applying a logistic function to the input data.
+In this case, it's used to predict
+whether a song will be popular or not, depending on the region and the 
+audio features of the song. The output is
+either 0 or 1, whith 0 representing the song most probably will not be popular and 
+1 representing the song most probably will be popular. \\
 
 
 
@@ -94,6 +93,8 @@ Classification Report
 
 \end{figure}
 
+Despite having a strong accuracy, the confusion matrix shows that the model is not able to predict correctly when a song will be popular. This is due to the class imbalance in the dataset, where the number of non-popular songs is significantly higher than the number of popular songs. As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives. 
+%This issue can be addressed by using techniques such as oversampling or undersampling to balance the classes in the dataset.
 
 
 \newpage
@@ -133,6 +134,9 @@ Classification Report
 
 \end{figure}
 
+The Decision Tree model has a lower accuracy compared to the Logistic Regression model, but the confusion matrix shows a better balance between the number of true positives and true negatives. This indicates that the Decision Tree model is better at predicting both popular and non-popular songs. However, the model still struggles with class imbalance, as evidenced by the low recall and precision values for the positive class. %This issue can be addressed by using techniques such as oversampling or undersampling to balance the classes in the dataset.
+
+\newpage
 The Decision Tree Classifier can be shown:
 
 \begin{figure}[H] 
@@ -146,14 +150,12 @@ The Decision Tree Classifier can be shown:
 
 \section{Random Forest}
 Random Forest is an ensemble learning method that constructs a multitude of decision trees during
-training and outputs the mode of the classes as the prediction of the individual trees. Random Forest
-is a versatile machine learning algorithm that can be used for both classification and regression
-tasks. It is based on the concept of bagging, which involves training multiple models on different
-subsets of the data and combining their predictions to improve the overall performance. Random Forest
+training and outputs the mode of the classes as the prediction of the individual trees. It can be used for both classification and regression
+tasks. Random Forest
 is known for its robustness, scalability, and ability to handle high-dimensional data with ease.
 In this project, Random Forest was used to predict whether the song will be popular or not based on their audio
-features and release region. \\
-The concept of Random Forest is based on Bagging (Bootsrap Aggregating) which is a technique to reduce the variance of the model
+features and region affiliation. \\
+The concept of Random Forest is based on Bagging (Bootsrap Aggregating) which is a technique used to reduce the variance of the model
 by averaging the predictions of multiple models. Random Forest builds multiple decision trees and merges them together to get a more
 accurate and stable prediction.
 \\
@@ -164,7 +166,7 @@ Mathematically, if \( T_1, T_2, \dots, T_B \) are the \( B \) decision trees in 
 \hat{y} = \text{mode} \left( T_1(x), T_2(x), \dots, T_B(x) \right)
 \]
 
-For regression, the final prediction is the average:
+For the regression, the final prediction is the average:
 
 \[
 \hat{y} = \frac{1}{B} \sum_{i=1}^{B} T_i(x)
@@ -201,15 +203,16 @@ Classification Report
 
 \end{figure}
 
+In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a better balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results.
 
-
-
-\section{Naive Bayes}
-Naive Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
+\section{Naïve Bayes}
+Naïve Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
 The algorithm is particularly popular for its simplicity, efficiency, and effectiveness in dealing with large datasets.
-It is called "naive" because it makes the assumption that the features are independent of each other given the class label.
+It is called "naïve" because it makes the assumption that the features are independent from each other given the class label.
 In this project Gaussian Naive Bayes is used to predict whether a song will be popular or not based on its audio features and release region by assuming that
-the features follow a normal distribution. The fundamental principle of the Naive Bayes algorithm is Bayes' Theorem, which is expressed as:
+the features follow a normal distribution. 
+
+The Bayes' Theorem is expressed as:
 
 \[
 P(C | X) = \frac{P(X | C) \cdot P(C)}{P(X)}
@@ -223,7 +226,7 @@ Where:
     \item \( P(X) \) is the prior probability of observing the features \( X \).
 \end{itemize}
 
-To make predictions, Naive Bayes calculates the posterior probability for each class and selects the class with the highest probability. The independence assumption simplifies the calculation of the likelihood:
+To make predictions, Naïve Bayes calculates the posterior probability for each class and selects the class with the highest probability. The independence assumption simplifies the calculation of the likelihood:
 
 \[
 P(X | C) = P(X_1 | C) \cdot P(X_2 | C) \cdots P(X_n | C)
@@ -260,13 +263,14 @@ Classification Report
 
 \end{figure}
 
+Also in this case the accuracy is good, but the confusion matrix shows that the model is not able to predict correctly when a song will be popular. As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives.
 
 \newpage
 
 
 \section{K-Nearest Neighbors}
 
-K-Nearest Neighbors (KNN) is a simple, instance-based learning algorithm that is used for classification and regression tasks. It is a non-parametric method that makes predictions based on the similarity of the input data to the training data. KNN is a lazy learning algorithm, meaning that it does not learn a model during training but instead stores the training data and makes predictions at runtime. The algorithm works by calculating the distance between the input data and the training data and selecting the K-nearest neighbors to make a prediction. The class label of the majority of the neighbors is assigned to the input data as the predicted class. In this project, KNN was used to predict whether a song will be popular or not based on its audio features and release region. \\
+K-Nearest Neighbors (KNN) is a simple, instance-based learning algorithm that is used for classification and regression tasks. It is a non-parametric method that makes predictions based on the similarity of the input data to the training data. KNN is a lazy learning algorithm, meaning that it does not learn a model during training but instead stores the training data and makes predictions at runtime. The algorithm works by calculating the distance between the input data and the training data and selecting the K-nearest neighbors to make a prediction. The class label of the majority of the neighbors is assigned to the input data as the predicted class. In this project, KNN was used to predict whether a song will be popular or not based on its audio features and region affiliation. \\
 
 Accuracy: \textbf{83.92\%}
 
@@ -299,10 +303,10 @@ Classification Report
 
 \newpage
 
-The KNN algorithm allows us to calculate and plot the ROC curve, which is a graphical representation of the true positive rate against the false positive rate. The ROC curve is useful for evaluating the performance of a classification model and comparing different models. The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. A higher AUC value indicates a better-performing model.
-True Positive Rate (Sensitivity/Recall) on the y-axis: This shows how often the model correctly identifies a popular song (i.e., correctly predicts a "positive" class).
-False Positive Rate on the x-axis: This shows how often the model incorrectly predicts a song as popular when it's not (i.e., incorrectly predicts a "positive" class when it should have been negative).
-The red dashed line represents a random classifier, meaning if the model was making random predictions, the ROC curve would follow this line (AUC = 0.5).
+The KNN algorithm allows us to calculate and plot the ROC curve, which is a graphical representation of the true positive rate against the false positive rate. This is useful for evaluating the performance of a classification model and comparing different models. The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. A higher AUC value indicates a better-performing model.\\
+The True Positive Rate (Sensitivity/Recall) on the y-axis shows how often the model correctly identifies a popular song (i.e., correctly predicts a "positive" class).\\
+The False Positive Rate on the x-axis shows how often the model incorrectly predicts a song as popular when it's not (i.e., incorrectly predicts a "positive" class when it should have been negative).\\
+The red dashed line represents a random classifier, meaning if the model was making random predictions, the ROC curve would follow this line (AUC = 0.5).\\
 The ROC curve for the KNN model is shown below:
 
 \begin{figure} [H]
