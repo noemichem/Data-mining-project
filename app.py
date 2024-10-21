@@ -1,3 +1,9 @@
+#pip instaal flask should be installed before running this code
+
+#run the code on terminal with python app.py
+#open the browser and type http://127.0.0.1:5000/
+
+
 from flask import Flask, render_template, request
 import joblib
 import numpy as np
