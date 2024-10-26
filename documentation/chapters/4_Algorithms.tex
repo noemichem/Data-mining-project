@@ -17,9 +17,7 @@ The initial steps were the same for all algorithms.
     \item \textbf{Data Preparation: } The dataset is split into X and Y: X containing the audio features and region, and Y containing the popularity column.
     The popularity column is used as the target variable. Then the dataset is split into training and testing sets using an 80/20 partition.
     \item \textbf{Feature Scaling: } The features are scaled using the \textit{StandardScaler} from the \textit{sklearn.preprocessing} library. The data is normalized to ensure that all feautres contribute equally to the distance calculation involved in the model, which helps improve the convergence of the algorithm.
-    \item \textbf{Handling Class Imbalancae: } To address potential class imbalance in the dataset, the \textit{Synthetic Minority Over-sampling Technique (SMOTE)} was applied, which
-    created synthetic samples of the minorty class (popular songs). 
-    %was this used for all models?
+  
     \item \textbf{Model Training: } The algorithm models were trained using the scaled training set. The model was
     configured with a maximum iteration limit of 2000 and class weight balanced to give equal importance to both classes during the training.
     \item \textbf{Cross-Validation: } To evaluate the model's performance more robustly, 5-fold cross-validation was performed.
@@ -45,7 +43,8 @@ whether a song will be popular or not, depending on the region and the
 audio features of the song. The output is
 either 0 or 1, whith 0 representing the song most probably will not be popular and 
 1 representing the song most probably will be popular. \\
-
+To address potential class imbalance in the dataset, the \textit{Synthetic Minority Over-sampling Technique (SMOTE)} was applied, which
+    created synthetic samples of the minorty class (popular songs). 
 
 
 Accuracy: \textbf{85.42\%}
