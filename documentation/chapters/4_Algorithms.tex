@@ -23,7 +23,7 @@ The initial steps were the same for all algorithms.
     \item \textbf{Cross-Validation: } To evaluate the model's performance more robustly, 5-fold cross-validation was performed.
     This technique involves splitting the data into five subsets (folds) and training the model on four folds while validating it on the remaining
     fold. This process is repeated five times, each time using a different fold for validation.
-    \item \textbf{Predictions: } Predictions were made on the scaled test set, and probabilities were calculated for class membership. A threshold of 0.3 was used to adjust the predicted probabilities to determine class labels.
+    \item \textbf{Predictions: } Predictions were made on the scaled test set, and probabilities were calculated for class membership. 
     \item \textbf{Model Evaluation: } The model was evaluated using the confusion matrix, classification report, which included metrics such as precicion, recall, and F1-score.
     \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the models. Both feature importance for the whole dataset and feature importance for each specific region has been applied. As a result, dominant features to determine the populartiy of the songs were found.
     \item \textbf{Regional Analysis: } Regional analysis was performed to better understand how different audio features contribute to make a song popular across various regions.
@@ -92,7 +92,8 @@ Classification Report
 
 \end{figure}
 
-Despite having a strong accuracy, the confusion matrix shows that the model is not able to predict correctly when a song will be popular. This is due to the class imbalance in the dataset, where the number of non-popular songs is significantly higher than the number of popular songs. As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives. 
+Despite having a strong accuracy, the confusion matrix shows that the model is not able to predict correctly when a song will be popular. This is due to the class imbalance in the dataset, where the number of non-popular songs is significantly higher than the number of popular songs. This happens despite having taking into consideration the class imbalance by using oversampling with the SMOTE technique.
+As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives. 
 %This issue can be addressed by using techniques such as oversampling or undersampling to balance the classes in the dataset.
 
 
@@ -202,7 +203,7 @@ Classification Report
 
 \end{figure}
 
-In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a better balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results.
+In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a better balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results. Moreover, Random Forest is very well suited for feature importance analysis, which is crucial for this project.
 
 \section{Naïve Bayes}
 Naïve Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
