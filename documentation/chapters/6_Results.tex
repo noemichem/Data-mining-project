@@ -13,17 +13,20 @@
     \hline
     \textbf{Model}           & \textbf{Accuracy} & \textbf{Weighted Average of Precision} \\ \hline
     Logistic Regression & 85.42\%          & 0.73                \\ \hline
-    Decision Tree       & 75.97\%          & 0.77              \\ \hline
-    Random Forests      & 85.67\%          & 0.83             \\ \hline
-    Naïve Bayes         & 85.04\%          & 0.75               \\ \hline
-    KNN                 & 83.92\%          & 0.80               \\ \hline
+    Decision Tree       & 68.64\%          & 0.78              \\ \hline
+    Random Forest      & 83.02\%          & 0.83             \\ \hline
+    Naïve Bayes         & 53.52\%          & 0.54               \\ \hline
+    KNN                 & 80.73\%          & 0.84               \\ \hline
     \end{tabular}
     \caption{Accuracy and Weighted Average of Precision of Different Models}
     \end{table}
     
-According to the results shown in the table above, Random Forests and Logistic Regression have the highest accuracy values. However, Random Forests has a
+According to the results shown in the table above, the model with the highest accuracy is Logistic Regression with 85.42\%, but this is due to the high imbalance of the dataset, so it's not considered the best model.
+
+
+However, Random Forests has a
 higher value on weighted Average of Precision
-%what do you mean by "higher value on weighted Average of Precision"?
+
 and if the confusion matrixes are compared it can be shown that Random Forests has a higher 
 probability of making correct predictions. This makes Random Forests the best model for this dataset with 85.67\% accuracy. 
 In general, all the models have high accuracy values, which indicates that the dataset is well-suited for classification. Even the worst model, Decision Tree, has an accuracy of 75.97\%, which is still a high value.\\

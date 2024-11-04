@@ -1,6 +1,7 @@
 \chapter{Algorithms}
 
-To further investigate the relationship between audio features, region, and song popularity, several machine learning algorithms were applied to the dataset. The goal was to build a model that could predict whether a song would be popular or not based on its audio features and release region. The following algorithms were used in this project:
+To further investigate the relationship between audio features, geographical regions, and song popularity, various machine learning algorithms were applied to the dataset. This approach allowed us to compare the algorithms we used not only amongst them, but also with the ones used in the literature review. In addition to those algorithm, also K-Nearest Neighbors (KNN) was used.
+The algorithms used in this project include:
 
 \begin{itemize}
     \item Logistic Regression
@@ -17,6 +18,7 @@ The initial steps were the same for all algorithms.
     \item \textbf{Data Preparation: } The dataset is split into X and Y: X containing the audio features and region, and Y containing the popularity column.
     The popularity column is used as the target variable. Then the dataset is split into training and testing sets using an 80/20 partition.
     \item \textbf{Feature Scaling: } The features are scaled using the \textit{StandardScaler} from the \textit{sklearn.preprocessing} library. The data is normalized to ensure that all feautres contribute equally to the distance calculation involved in the model, which helps improve the convergence of the algorithm.
+    \item \textbf{Class Imbalance: } The dataset is checked for class imbalance, and if necessary, techniques such as oversampling or undersampling are applied to balance the classes.
   
     \item \textbf{Model Training: } The algorithm models were trained using the scaled training set. The model was
     configured with a maximum iteration limit of 2000 and class weight balanced to give equal importance to both classes during the training.
@@ -92,21 +94,20 @@ Classification Report
 
 \end{figure}
 
-Despite having a strong accuracy, the confusion matrix shows that the model is not able to predict correctly when a song will be popular. This is due to the class imbalance in the dataset, where the number of non-popular songs is significantly higher than the number of popular songs. This happens despite having taking into consideration the class imbalance by using oversampling with the SMOTE technique.
-As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives. 
-%This issue can be addressed by using techniques such as oversampling or undersampling to balance the classes in the dataset.
+The strong accuracy is due to the strong class imbalance. In fact, the confusion matrix shows that the model is not able to predict at all when a song will be popular. This happens despite having taking into consideration the class imbalance by using oversampling with the SMOTE technique.
+
 
 
 \newpage
 
 \section{Decision Tree}
 
-Decision Tree is a supervised machine learning algorithm that is used for both classification and regression tasks. It works by recursively partitioning the data into subsets based on the values of the input features. The goal is to create a model that predicts the value of the target variable by learning simple decision rules inferred from the data features. Decision trees are easy to interpret and visualize, making them popular for exploratory data analysis and decision-making tasks. In this project, Decision Tree was used to predict whether a song will be popular or not based on their audio features and region affiliation. \\
+Decision Tree is a supervised machine learning algorithm that is used for both classification and regression tasks. It works by recursively partitioning the data into subsets based on the values of the input features. The goal is to create a model that predicts the value of the target variable by learning simple decision rules inferred from the data features. Decision trees are easy to interpret and visualize, making them popular for exploratory data analysis and decision-making tasks. In this project, Decision Tree was used with the SMOTE technique to address the class imbalance. \\
 
 After splitting the dataset into test and train sets and fitting the model, the Decision Tree model was evaluated using the following metrics: accuracy, confusion matrix and classification report.
 
 
-Accuracy: \textbf{75.97\%}
+Accuracy: \textbf{68.64\%}
 
 Classification Report
 \begin{table}[h]
@@ -115,12 +116,12 @@ Classification Report
         \toprule
         & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
         \midrule
-        0 & 0.87 & 0.85 & 0.86 & 55340 \\
-        1 & 0.22 & 0.25 & 0.23 & 9613 \\
+        0 & 0.88 & 0.73 & 0.80 & 55340 \\
+        1 & 0.21 & 0.42 & 0.28 & 9613 \\
         \midrule
-        \textbf{Accuracy} & \multicolumn{4}{c}{0.76} \\
-        \textbf{Macro avg} & 0.54 & 0.55 & 0.55 & 64953 \\
-        \textbf{Weighted avg} & 0.77 & 0.76 & 0.77 & 64953 \\
+        \textbf{Accuracy} & \multicolumn{4}{c}{0.69} \\
+        \textbf{Macro avg} & 0.55 & 0.58 & 0.54 & 64953 \\
+        \textbf{Weighted avg} & 0.78 & 0.69 & 0.72 & 64953 \\
         \bottomrule
     \end{tabular}
     \caption{Classification Report}
@@ -134,7 +135,7 @@ Classification Report
 
 \end{figure}
 
-The Decision Tree model has a lower accuracy compared to the Logistic Regression model, but the confusion matrix shows a better balance between the number of true positives and true negatives. This indicates that the Decision Tree model is better at predicting both popular and non-popular songs. However, the model still struggles with class imbalance, as evidenced by the low recall and precision values for the positive class. %This issue can be addressed by using techniques such as oversampling or undersampling to balance the classes in the dataset.
+The Decision Tree model has a pretty good accuracy and the confusion matrix shows a better balance between the number of true positives and true negatives. This indicates that the Decision Tree model is better at predicting both popular and non-popular songs. But still the results could be improved.
 
 \newpage
 The Decision Tree Classifier can be shown:
@@ -153,8 +154,7 @@ Random Forest is an ensemble learning method that constructs a multitude of deci
 training and outputs the mode of the classes as the prediction of the individual trees. It can be used for both classification and regression
 tasks. Random Forest
 is known for its robustness, scalability, and ability to handle high-dimensional data with ease.
-In this project, Random Forest was used to predict whether the song will be popular or not based on their audio
-features and region affiliation. \\
+In this project, Random Forest was used with the SMOTE technique to address the class imbalance. \\
 The concept of Random Forest is based on Bagging (Bootsrap Aggregating) which is a technique used to reduce the variance of the model
 by averaging the predictions of multiple models. Random Forest builds multiple decision trees and merges them together to get a more
 accurate and stable prediction.
@@ -174,7 +174,7 @@ For the regression, the final prediction is the average:
 \\
 \\
 \\
-Accuracy: \textbf{85.67\%}
+Accuracy: \textbf{83.02\%}
 
 \newpage
 Classification Report
@@ -184,12 +184,12 @@ Classification Report
         \toprule
         & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
         \midrule
-        0 & 0.88 & 0.96 & 0.92 & 55340 \\
-        1 & 0.53 & 0.26 & 0.35 & 9613 \\
+        0 & 0.82 & 0.84 & 0.83 & 55340 \\
+        1 & 0.84 & 0.82 & 0.83 & 55443 \\
         \midrule
-        \textbf{Accuracy} & \multicolumn{4}{c}{0.86} \\
-        \textbf{Macro avg} & 0.71 & 0.61 & 0.64 & 64953 \\
-        \textbf{Weighted avg} & 0.83 & 0.86 & 0.84 & 64953 \\
+        \textbf{Accuracy} & \multicolumn{4}{c}{0.83} \\
+        \textbf{Macro avg} & 0.83 & 0.83 & 0.83& 110913 \\
+        \textbf{Weighted avg} & 0.83 & 0.83 & 0.83 & 110913 \\
         \bottomrule
     \end{tabular}
     \caption{Classification Report}
@@ -203,7 +203,7 @@ Classification Report
 
 \end{figure}
 
-In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a better balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results. Moreover, Random Forest is very well suited for feature importance analysis, which is crucial for this project.
+In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a good balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results. Moreover, Random Forest is very well suited for feature importance analysis, which is crucial for this project.
 
 \section{Naïve Bayes}
 Naïve Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
@@ -211,6 +211,7 @@ The algorithm is particularly popular for its simplicity, efficiency, and effect
 It is called "naïve" because it makes the assumption that the features are independent from each other given the class label.
 In this project Gaussian Naive Bayes is used to predict whether a song will be popular or not based on its audio features and release region by assuming that
 the features follow a normal distribution. 
+To address the class imbalance, undersampling has a more balanced result than oversampling, so it was used in this case.\\
 
 The Bayes' Theorem is expressed as:
 
@@ -234,7 +235,7 @@ P(X | C) = P(X_1 | C) \cdot P(X_2 | C) \cdots P(X_n | C)
 
 Where \( X_1, X_2, \ldots, X_n \) are the features.
 
-Accuracy: \textbf{85.04\%}
+Accuracy: \textbf{53.52\%}
 
 
 Classification Report
@@ -244,12 +245,12 @@ Classification Report
         \toprule
         & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
         \midrule
-        0 & 0.85 & 1.00 & 0.92 & 55340 \\
-        1 & 0.17 & 0.00 & 0.01 & 9613 \\
+        0 & 0.54 & 0.46 & 0.50 & 9544 \\
+        1 & 0.53 & 0.61 & 0.57 & 9450 \\
         \midrule
-        \textbf{Accuracy} & \multicolumn{4}{c}{0.85} \\
-        \textbf{Macro avg} & 0.51 & 0.50 & 0.46 & 64953 \\
-        \textbf{Weighted avg} & 0.75 & 0.85 & 0.78 & 64953 \\
+        \textbf{Accuracy} & \multicolumn{4}{c}{0.54} \\
+        \textbf{Macro avg} & 0.54 & 0.54 & 0.53 & 18994 \\
+        \textbf{Weighted avg} & 0.54 & 0.54 & 0.53 & 18994 \\
         \bottomrule
     \end{tabular}
     \caption{Classification Report}
@@ -263,16 +264,15 @@ Classification Report
 
 \end{figure}
 
-Also in this case the accuracy is good, but the confusion matrix shows that the model is not able to predict correctly when a song will be popular. As a result, the model tends to predict non-popular songs more frequently, leading to a high number of false negatives.
-
+In this case the accuracy is not too good, and the confusion matrix is quite balanced, but it could still be better. This is why the Naïve Bayes model is not the best one for this project.
 \newpage
 
 
 \section{K-Nearest Neighbors}
 
-K-Nearest Neighbors (KNN) is a simple, instance-based learning algorithm that is used for classification and regression tasks. It is a non-parametric method that makes predictions based on the similarity of the input data to the training data. KNN is a lazy learning algorithm, meaning that it does not learn a model during training but instead stores the training data and makes predictions at runtime. The algorithm works by calculating the distance between the input data and the training data and selecting the K-nearest neighbors to make a prediction. The class label of the majority of the neighbors is assigned to the input data as the predicted class. In this project, KNN was used to predict whether a song will be popular or not based on its audio features and region affiliation. \\
+K-Nearest Neighbors (KNN) is a simple, instance-based learning algorithm that is used for classification and regression tasks. It is a non-parametric method that makes predictions based on the similarity of the input data to the training data. KNN is a lazy learning algorithm, meaning that it does not learn a model during training but instead stores the training data and makes predictions at runtime. The algorithm works by calculating the distance between the input data and the training data and selecting the K-nearest neighbors to make a prediction. The class label of the majority of the neighbors is assigned to the input data as the predicted class. In this project, KNN was used with oversampling, specificcally using the SMOTE technique, to address the class imbalance.\\
 
-Accuracy: \textbf{83.92\%}
+Accuracy: \textbf{80.73\%}
 
 
 Classification Report
@@ -282,12 +282,12 @@ Classification Report
         \toprule
         & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
         \midrule
-        0 & 0.87 & 0.96 & 0.91 & 55340 \\
-        1 & 0.39 & 0.16 & 0.22 & 9613 \\
+        0 & 0.96 & 0.64 & 0.77 & 55470 \\
+        1 & 0.73 & 0.97 & 0.83 & 55443 \\
         \midrule
-        \textbf{Accuracy} & \multicolumn{4}{c}{0.85} \\
-        \textbf{Macro avg} & 0.63 & 0.56 & 0.57 & 64953 \\
-        \textbf{Weighted avg} & 0.80 & 0.84 & 0.81 & 64953 \\
+        \textbf{Accuracy} & \multicolumn{4}{c}{0.81} \\
+        \textbf{Macro avg} & 0.84 & 0.81 & 0.80 & 110913 \\
+        \textbf{Weighted avg} & 0.84 & 0.81 & 0.80 & 110913 \\
         \bottomrule
     \end{tabular}
     \caption{Classification Report}
@@ -296,7 +296,7 @@ Classification Report
 
 \begin{figure}[h] 
     \centering 
-    \includegraphics[width=0.6\textwidth]{media/knn-confusion_matrix.jpg}
+    \includegraphics[width=0.6\textwidth]{media/knn_confusion_matrix.png}
     \caption{Confusion Matrix of KNN Model}
 
 \end{figure}
@@ -316,7 +316,4 @@ The ROC curve for the KNN model is shown below:
     \label{fig:knn_roc_curve}
 \end{figure}
 
-An AUC of 0.63 suggests that the KNN model is performing better than random, but it is still relatively weak.
-A perfect model would have an AUC of 1.0, where it correctly distinguishes between popular and non-popular songs without error.
-
-This means that it is able to capture some patterns in the data, but the performance is not particularly strong. 
+An AUC of 0.90 suggests that the KNN model is able to distinguish between popular and non-popular songs with high accuracy. This is a very good result.
