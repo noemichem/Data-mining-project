@@ -1,7 +1,7 @@
 \chapter{Algorithms}
 
-To further investigate the relationship between audio features, geographical regions, and song popularity, various machine learning algorithms were applied to the dataset. This approach allowed us to compare the algorithms we used not only amongst them, but also with the ones used in the literature review. In addition to those algorithm, also K-Nearest Neighbors (KNN) was used.
-The algorithms used in this project include:
+To further investigate the relationship between audio features, geographical regions, and song popularity, various machine learning algorithms were applied to the dataset. In particular, the same algorithms that are used in the literature review have been used. This approach allowed us to compare the algorithms we used not only amongst them, but also with the ones used in the literature review. In addition to those algorithms, also K-Nearest Neighbors (KNN) was used.\\
+The algorithms include:
 
 \begin{itemize}
     \item Logistic Regression
@@ -26,7 +26,7 @@ The initial steps were the same for all algorithms.
     This technique involves splitting the data into five subsets (folds) and training the model on four folds while validating it on the remaining
     fold. This process is repeated five times, each time using a different fold for validation.
     \item \textbf{Predictions: } Predictions were made on the scaled test set, and probabilities were calculated for class membership. 
-    \item \textbf{Model Evaluation: } The model was evaluated using the confusion matrix, classification report, which included metrics such as precicion, recall, and F1-score.
+    \item \textbf{Model Evaluation: } The model was evaluated using the confusion matrix, classification report, which included metrics such as precision, recall, and F1-score.
     \item \textbf{Feature Importance: } The feature importance of the model was determined by examining the coefficients of the models. Both feature importance for the whole dataset and feature importance for each specific region has been applied. As a result, dominant features to determine the populartiy of the songs were found.
     \item \textbf{Regional Analysis: } Regional analysis was performed to better understand how different audio features contribute to make a song popular across various regions.
 \end{itemize} 
@@ -36,7 +36,7 @@ The initial steps were the same for all algorithms.
 
 
 \section{Logistic Regression}
-Logistic regression a supervised machine learning algorithm that is used to
+Logistic regression is a supervised machine learning algorithm that is used to
 compute classification problems with a binary output.
 It is based on the idea of modeling the probability of a certain class or event.
 Unlike linear regression, which predicts continuous values, logistic regression predicts categorical outcomes by applying a logistic function to the input data.
@@ -135,7 +135,7 @@ Classification Report
 
 \end{figure}
 
-The Decision Tree model has a pretty good accuracy and the confusion matrix shows a better balance between the number of true positives and true negatives. This indicates that the Decision Tree model is better at predicting both popular and non-popular songs. But still the results could be improved.
+The Decision Tree model has a pretty good accuracy and the confusion matrix shows a better balance between the number of true positives and true negatives compared to Logistic Regression. This indicates that the Decision Tree model is better at predicting both popular and non-popular songs, but still the results could be improved.
 
 \newpage
 The Decision Tree Classifier can be shown:
@@ -205,6 +205,7 @@ Classification Report
 
 In this case there's both a good accuracy of the model and a good result of the confusion matrix, which shows a good balance between the number of true positives and true negatives. This is why the Random Forest model is the one taken into account for the final results. Moreover, Random Forest is very well suited for feature importance analysis, which is crucial for this project.
 
+\newpage
 \section{Naïve Bayes}
 Naïve Bayes is a family of probabilistic algorithms based on Bayes' Theorem, which is used for classification tasks.
 The algorithm is particularly popular for its simplicity, efficiency, and effectiveness in dealing with large datasets.
@@ -257,7 +258,7 @@ Classification Report
     \label{tab:classification_report}
 \end{table}
 
-\begin{figure}[h] 
+\begin{figure}[H] 
     \centering 
     \includegraphics[width=0.6\textwidth]{media/naive_bayes_confusion_matrix.png}
     \caption{Confusion Matrix of Naive Bayes Model}
@@ -316,4 +317,4 @@ The ROC curve for the KNN model is shown below:
     \label{fig:knn_roc_curve}
 \end{figure}
 
-An AUC of 0.90 suggests that the KNN model is able to distinguish between popular and non-popular songs with high accuracy. This is a very good result.
+An AUC of 0.90 suggests that the KNN model is able to distinguish between popular and non-popular songs with high accuracy. This is a very good result, but the confusion matrix is more accurate on predicting the popular songs rather than the non popular ones.
